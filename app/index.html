@@ -1,37 +1,80 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="phonecatApp">
   <head>
     <meta charset="utf-8">
-    <title>Step 1</title>
+    <title>Step 2</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="task_3.css" />
     <script src="bower_components/angular/angular.js"></script>
+	<script src="task_3.js"></script>
   </head>
   <body>
-	<div style="margin-left:40px; color: green">
+	
+	<div class="ended">
+		<h3>Step_0</h3>
 		<p>Calculating value 1 + 4 = {{ 1 + 4 }}</p>
 		<p>Nothing here {{'any' + 'more!'}}</p>
 	</div>
-	<ul>
-		<h3>Statis list</h3>
-		<li>
-			<span>Nexus S</span>
-			<p>
-				Fast just got faster with Nexus S.
-			</p>
-		</li>
-		<li>
-			<span>Motorola XOOM™ with Wi-Fi</span>
-			<p>
-				The Next, Next Generation tablet.
-			</p>
-		</li>
-		<li>
-			<span>Nokia 3310</span>
-			<p>
-				Nokia - Connegting people.
-			</p>
-		</li>
-	</ul>
+	
+	<div class="ended">
+        <h3>Step_1</h3>
+		<ul>
+			<h3>Statis list</h3>
+			<li>
+				<span>Nexus S</span>
+				<p>
+					Fast just got faster with Nexus S.
+				</p>
+			</li>
+			<li>
+				<span>Motorola XOOM™ with Wi-Fi</span>
+				<p>
+					The Next, Next Generation tablet.
+				</p>
+			</li>
+			<li>
+				<span>Nokia 3310</span>
+				<p>
+					Nokia - Connegting people.
+				</p>
+			</li>
+		</ul>
+	</div>
+	
+	<div ng-controller="PhoneListController">
+		<h3>Step_2</h3>
+		<h3>Data from model through controller</h3>
+		<ul>
+            
+		  <li ng-repeat="phone in phones">
+			<span>{{phone.name}}</span>
+			<p>{{phone.snippet}}</p>
+			<p>{{ 'Welcome message from ' + phone.name + ': Hello ' + phone.mes}}</p>
+		  </li>
+            
+		  <li>
+			<span>Number of records in list of phones: {{phones.length}}</span>
+		  </li>
+            
+		  <li>
+			<span>Weclome message: {{'Hello ' + message}}</span>
+		  </li>
+            
+		</ul>
+		
+		<table class="table" style="margin-left:40px">
+			<tr>
+				<th>
+					Row number
+				</th>
+			</tr>
+			<tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">
+				<td>
+					{{i + 1}}
+				</td>
+			</tr>
+		</table>
+	</div>
 	
   </body>
 </html>
