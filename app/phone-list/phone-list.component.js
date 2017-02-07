@@ -1,17 +1,7 @@
 angular.
-    module('phonecatApp').
+    module('phoneList').
     component('phoneList', {
-        template:
-            '<ul>' + 
-                '<li ng-repeat="phone in $ctrl.phones">' + 
-                    '<span>{{phone.name}}</span>' +
-                    '<p>{{phone.snippet}}</p>' +
-                    '<p>Welcome message from {{phone.name}}: Hello {{phone.mes}}</p>' + 
-                '</li>' +
-                '<li>' +
-                    '<span>Number of records in list of phones: {{$ctrl.phones.length}}</span>' +
-                '</li>' +
-            '</ul>',
+        templateUrl: 'phone-list/phone-list.template.html',
         controller: function PhoneListController(){
             this.phones = [
                 {

@@ -1,0 +1,10 @@
+<ul> 
+    <li ng-repeat="phone in $ctrl.phones">
+        <span>{{phone.name}}</span>
+        <p>{{phone.snippet}}</p>
+        <p>Welcome message from {{phone.name}}: Hello {{phone.mes}}</p>
+    </li>
+    <li>
+        <span>Number of records in list of phones: {{$ctrl.phones.length}}</span>
+    </li>
+</ul>
