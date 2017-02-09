@@ -1,8 +1,3 @@
-//'use strict';
-
-// Angular E2E Testing Guide:
-// https://docs.angularjs.org/guide/e2e-testing
-
 describe('PhoneCat Application', function() {
     
     describe('phoneList', function(){
@@ -23,6 +18,34 @@ describe('PhoneCat Application', function() {
             query.clear();
             query.sendKeys('nokia');
             expect(phoneList.count()).toBe(2);
+        });
+        
+        it('should be possible to control phone order via the drop-down menu', function() {
+          var queryField = element(by.model('$ctrl.query'));
+          var orderSelect = element(by.model('$ctrl.orderProp'));
+          var nameOption = orderSelect.element(by.css('option[value="name"]'));
+          var phoneNameColumn = element.all(by.repeater('phone in $ctrl.phones').column('phone.name'));
+
+          function getNames() {
+            return phoneNameColumn.map(function(elem) {
+              return elem.getText();
+            });
+          }
+
+          queryField.sendKeys('tablet');   // Let's narrow the dataset to make the assertions shorter
+
+          expect(getNames()).toEqual([
+            'Nokia Lumia',
+            'Motorola XOOM\u2122 with Wi-Fi'
+          ]);
+
+          nameOption.click();
+            
+          expect(getNames()).toEqual([
+            'Motorola XOOM\u2122 with Wi-Fi',
+            'Nokia Lumia'
+          ]);
+            
         });
         
     });

@@ -8,17 +8,24 @@
                 Search: <input ng-model="$ctrl.query"/>
             </p>
             
+            <!--<p>{{$ctrl.orderProp}}</p>-->
+            
             <p>
                 Sort by:
                 <select ng-model="$ctrl.orderProp">
                     <option value="name">Alphabetic</option>
                     <option value="age">Newest</option>
+                    
+                    <!--<option value="-age">Oldest</option>-->
+                    
                     <option value="mes">Welcome message</option>
                     <option value="snippet">Description</option>
                 </select>
             </p> 
             
-            <!--<span class="sortorder" ng-show="propertyName === $ctrl.orderProp" ng-class="{reverse: reverse}"></span>-->
+            <p> 
+                <b>Descending</b> <input type="checkbox" ng-model="descend">
+            </p>
             
         </div>
         
@@ -27,9 +34,11 @@
         <div class="col-md-10">
             
             <ul class="phones"> 
-                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp:descend">
                     <span>{{phone.name}}</span>
                     <p>{{phone.snippet}}</p>
+                    
+                    <!-- Comment the following string for starting E2E test -->
                     <p>Welcome message from {{phone.name}}: Hello {{phone.mes}}</p>
                 </li>
                 <li>
