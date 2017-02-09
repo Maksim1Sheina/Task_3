@@ -3,22 +3,18 @@
     <div class="row">
         
         <div class="col-md-2">
-            
+            <!-- Display insormation about data from JSON file.
+                <pre>{{$ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp | json}}</pre> binding to see the list of phones 
+            -->
             <p>
                 Search: <input ng-model="$ctrl.query"/>
             </p>
-            
-            <!--<p>{{$ctrl.orderProp}}</p>-->
             
             <p>
                 Sort by:
                 <select ng-model="$ctrl.orderProp">
                     <option value="name">Alphabetic</option>
                     <option value="age">Newest</option>
-                    
-                    <!--<option value="-age">Oldest</option>-->
-                    
-                    <option value="mes">Welcome message</option>
                     <option value="snippet">Description</option>
                 </select>
             </p> 
@@ -29,20 +25,15 @@
             
         </div>
         
-        <!-- <p>{{$ctrl.query}}</p> -->
-        
         <div class="col-md-10">
             
-            <ul class="phones"> 
+            <ul class="phones">
                 <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp:descend">
                     <span>{{phone.name}}</span>
                     <p>{{phone.snippet}}</p>
-                    
-                    <!-- Comment the following string for starting E2E test -->
-                    <p>Welcome message from {{phone.name}}: Hello {{phone.mes}}</p>
                 </li>
                 <li>
-                    <p><span style="color: red; font: bold">Note:</span> number of records not used repeater.</p>
+                    <span style="color: red; font: bold">Note:</span> number of records not used repeater.
                     <p>Number of records in list of phones: {{$ctrl.phones.length}}</p>
                 </li>
             </ul>
