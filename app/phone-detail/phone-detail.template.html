@@ -2,14 +2,18 @@
 
 <h1>{{$ctrl.phone.name}}</h1>
 
-<img ng-src="{{$ctrl.mainImageUrl}}" class="phone" />
+<div class="phone-images">
+    <img ng-src="{{img}}" class="phone"
+         ng-class="{selected: img === $ctrl.mainImageUrl}"
+         ng-repeat="img in $ctrl.phone.images" />
+</div>
 
 <p>{{$ctrl.phone.description}}</p>
 
 <ul class="phone-thumbs">
-    <li ng-repeat="img in $ctrl.phone.images">
-        <img src="{{img}}" title="{{$ctrl.phone.name}}" ng-click="$ctrl.setImage(img)" ng-dblclick="$ctrl.onDblclick(img)" />
-    </li>
+  <li ng-repeat="img in $ctrl.phone.images">
+    <img ng-src="{{img}}" ng-click="$ctrl.setImage(img)" ng-Dblclick="$ctrl.onDblclick(img)"/>
+  </li>
 </ul>
 
 <ul class="specs">
